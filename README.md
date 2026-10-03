@@ -29,10 +29,10 @@ Five columns are dropped before training because each one is a dead giveaway for
 the label — every value is a fixed sentinel exactly when a student is *Not Placed*:
 
 - `Student_ID` — a per-row identifier, no predictive signal.
-- `Company_Tier` — equals `"No Company"` iff the student is Not Placed.
-- `Career_Field` — equals `"Not Placed"` iff the student is Not Placed.
-- `Placement_Mode` — equals `"Not Applicable"` iff the student is Not Placed.
-- `Starting_Salary_USD` — equals `0` iff the student is Not Placed.
+- `Company_Tier` — equals `"No Company"` if the student is Not Placed.
+- `Career_Field` — equals `"Not Placed"` if the student is Not Placed.
+- `Placement_Mode` — equals `"Not Applicable"` if the student is Not Placed.
+- `Starting_Salary_USD` — equals `0` if the student is Not Placed.
 
 Keeping any of these would let the model "cheat" by reading the answer straight
 from a feature, so they are removed in `make_train_test_split`.
