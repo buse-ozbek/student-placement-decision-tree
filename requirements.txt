@@ -1,0 +1,12 @@
+# Python dependencies for the placement-prediction project.
+# macOS note: XGBoost and LightGBM need the OpenMP runtime. Install it once with:
+#   brew install libomp
+numpy
+pandas
+scikit-learn==1.9.1
+scipy
+matplotlib
+seaborn
+xgboost==3.4.1
+lightgbm==4.7.0
+catboost==1.2.10

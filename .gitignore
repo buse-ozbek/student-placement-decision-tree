@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Generated model outputs (regenerate by running the pipeline)
+results/
+
+# macOS
+.DS_Store
+
+# Workflow / build scratch files
+.agents/
+
+# Report is shared separately via Overleaf, not tracked here
+report/
+report.md
+report.zip
