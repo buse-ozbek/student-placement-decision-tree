@@ -83,6 +83,16 @@ def parse_args(argv=None):
         action="store_true",
         help="Sensitivity run that drops the three score columns.",
     )
+    parser.add_argument(
+        "--eda",
+        action="store_true",
+        help="Generate the EDA figures and summary table before modelling.",
+    )
+    parser.add_argument(
+        "--eda-only",
+        action="store_true",
+        help="Only generate the EDA outputs, then exit (skip modelling).",
+    )
     return parser.parse_args(argv)
 
 
@@ -97,6 +107,19 @@ def main(argv=None):
     print(f"=== Placement pipeline: {mode} ===")
     if args.drop_scores:
         print("(score columns dropped for sensitivity analysis)")
+
+    # 0. EDA (optional) -----------------------------------------------------
+    # Run when --eda or --eda-only is passed. --eda-only exits right after.
+    if args.eda or args.eda_only:
+        print("\n--- Exploratory data analysis ---")
+        from src.eda import run_eda
+
+        eda_outputs = run_eda()
+        for path in eda_outputs:
+            print(f"  wrote {path}")
+        if args.eda_only:
+            print("\nDone (EDA only).")
+            return 0
 
     # 1. Data + split -------------------------------------------------------
     df = load_data()
